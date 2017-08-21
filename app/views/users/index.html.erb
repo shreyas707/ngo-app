@@ -1,0 +1,60 @@
+<div class="col-md-4">
+	<h1>Users</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<table id="userTable", class="datatable">
+					<thead>
+						<tr>
+							<th>Sl. Number</th>
+							<th>Name</th>
+							<th>Role</th>
+							<th>Organization</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%@users.each_with_index do |user, index|%>
+							<tr>
+								<td><%=index+1%></td>
+								<td><%=link_to user.name, user_path(user.id)%></td>
+								<td><%=user.role.name%></td>
+								<td>
+									<%=user.organization.try(:name) %>
+								</td> 
+								<td><div class="btn-group" role="group" aria-label="...">
+									<%=link_to edit_user_path(user.id), class:"btn btn-primary" do%>
+										<i class="glyphicon glyphicon-pencil"></i>Edit user
+									<%end%>
+									<%=link_to user_path(user.id), method: :delete, class:"btn btn-danger",data: {confirm: "Arer you sure"} do%>
+										<i class="glyphicon glyphicon-remove"></i>Delete user
+									<%end%>
+									</div></td>
+							</tr>
+						<%end%>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+	<%=link_to new_user_path, class:"btn btn-success" do%>
+		<i class="glyphicon glyphicon-plus"></i>New user
+	<%end%>
+</div>
+<script type="text/javascript">
+$('.datatable').DataTable({
+  // ajax: ...,
+  // autoWidth: false,
+  // pagingType: 'full_numbers',
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
+});
+</script>

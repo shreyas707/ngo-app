@@ -1,0 +1,12 @@
+<h1>Edit Subject</h1>
+<%=form_for @subject do |f|%>
+	<%if @subject.errors.any?%>
+		<ul>
+			<%@subject.errors.full_messages.each do |message|%>
+				<li><%=message%></li>
+			<%end%>
+		</ul>
+	<%end%>
+	<%=f.text_field :name, placeholder: "Subject name", autofocus:true%><br/>
+	<%=f.submit%>
+<%end%>

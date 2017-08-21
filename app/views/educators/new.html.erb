@@ -1,0 +1,18 @@
+<%=form_for @educator, validates: true do |f|%>
+	<% if @educator.errors.any?%>
+		<ul>
+		<%@educator.errors.full_messages.each do |message|%>
+			<li><%=message%></li>
+		<%end%>
+		</ul>
+	<%end%>
+	<%=f.select :weekly_goal, (1..20), prompt:"How many hours per week would you like to teach?"%><br/>
+	<h5>Do you need a certificate for your work?</h5>
+		  	<%=f.radio_button :certificate_required, false%>Certificate required
+		  	<%=f.radio_button :certificate_required, true%> Certificate not required<br/>
+	<h4>What do you like to teach </h4>
+
+	<%= f.collection_check_boxes :subject_ids, Subject.all, :id, :name %><br/>
+	<%=f.submit "Let's go"%>
+<%end%>
+

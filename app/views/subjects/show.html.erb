@@ -1,0 +1,48 @@
+<div class="col-md-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<h1><%=@subject.name%></h1>
+				<h3>Chapters</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%@subject.chapters.each do |chapter|%>
+							<tr>
+								<td><%=link_to chapter.name, edit_chapter_path(chapter.id)%></td>
+								<td><div class="btn-group" role="group" aria-label="...">
+										<%=link_to edit_chapter_path(chapter.id), class:"btn btn-primary" do%>
+											<i class="glyphicon glyphicon-pencil"></i>Edit chapter
+										<%end%>
+										<%=link_to chapter_path(chapter.id), method: :delete, class:"btn btn-danger",data: {confirm: "Arer you sure"} do%>
+											<i class="glyphicon glyphicon-remove"></i>Delete chapter
+										<%end%>
+									</div></td>
+							</tr>
+						<%end%>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+
+</div>
+<div class ="col-md-4">
+	<div class="btn-group" role="group" aria-label="...">
+		<%=link_to edit_subject_path(@subject.id), class:"btn btn-primary" do%>
+			<i class="glyphicon glyphicon-pencil"></i>Edit subject
+		<%end%>
+		<%=link_to subject_path(@subject.id), method: :delete, class:"btn btn-danger",data: {confirm: "Arer you sure"} do%>
+			<i class="glyphicon glyphicon-remove"></i>Delete subject
+		<%end%>
+	</div><br/>
+	<%=link_to new_chapter_path(subject_id: @subject.id), class:"btn btn-success" do%>
+			<i class="glyphicon glyphicon-plus"></i>New chapter
+		<%end%>
+</div>

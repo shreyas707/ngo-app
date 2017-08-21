@@ -1,0 +1,6 @@
+<h1>Welcome,<%=current_user.name%>, here's the most recent data on <%=current_user.organization.name.capitalize%>
+<div class="col md-4">
+	<div class="row">
+		<h3><%=current_user.organization.users.length%> users.</h3>
+	</div>
+</div>

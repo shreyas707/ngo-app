@@ -1,0 +1,24 @@
+<%unless user_signed_in?%>
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<h1>Home - Project</h1>
+		<ul class="list-unstyled">
+			<li>You can learn anything</li>
+			<li>You can teach anything</li>
+  			<li>You can make a difference</li>
+  		</ul>
+  		<%=link_to "Learners, begin here", new_user_session_path, type: "button",class:"btn btn-primary btn-lg btn-block"%>
+  		<%=link_to "Tutors & Mentors, begin here", new_user_session_path, type: "button",class:"btn btn-primary btn-lg btn-block"%>
+  		<%=link_to "Schools & Non-Profits, begin here", new_user_session_path, type: "button",class:"btn btn-primary btn-lg btn-block"%>
+  	</div>
+<%end%>
+<%if user_signed_in?%>
+	<%case current_user.role_id%>
+		<%when 2%>
+			<%=render 'learnerHome'%>
+		<%when 3%>
+			<%=render 'orgAdminHome'%>
+		<%when 5%>
+			<%=render 'educatorHome'%>
+	<%end%>
+<%end%>

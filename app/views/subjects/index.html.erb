@@ -1,0 +1,27 @@
+<h1>All subjects</h1><br/>
+<%=link_to "New subject", new_subject_path%><br/>
+<table class="table">
+	<thead>
+		<td>Sl. No</td>
+		<td>Name</td>
+		<td>Number of subjects</td>
+		<td>Actions</td>
+	</thead>
+	<tbody>
+		<%@subjects.each_with_index do |subject, index|%>
+			<tr>
+				<td><%=index+1%></td>
+				<td><%=link_to subject.name, subject_path(subject.id)%></td>
+				<td><%=subject.chapters.count%></td>
+				<td><div class="btn-group" role="group" aria-label="...">
+						<%=link_to edit_subject_path(subject.id), class:"btn btn-primary" do%>
+							<i class="glyphicon glyphicon-pencil"></i>Edit subject
+						<%end%>
+						<%=link_to subject_path(subject.id), method: :delete, class:"btn btn-danger",data: {confirm: "Arer you sure"} do%>
+							<i class="glyphicon glyphicon-remove"></i>Delete subject
+						<%end%>
+					</div></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

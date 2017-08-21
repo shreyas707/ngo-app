@@ -1,0 +1,22 @@
+<h1>All organizations</h1>
+<h3 style="text-align: right;"><%=link_to "New organization", new_organization_path%></h3>
+<table>
+	<thead>
+		<tr>
+			<td>Sl. Number</td>
+			<td>Name</td>
+			<td>Type</td>
+			<td>Actions</td>
+		</tr>
+	</thead>
+	<tbody>
+		<%@organizations.each_with_index do |organization, index|%>
+			<tr>
+				<td><%=index+1%></td>
+				<td><%=link_to organization.name, organization_path(organization.id)%></td>
+				<td><%=organization.type_of_organization%></td>
+				<td><%=link_to "Edit", edit_organization_path(organization.id)%> <%=link_to "Delete", organization_path(organization.id), method: :delete, data: {confirm: "Arer you sure"}%></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

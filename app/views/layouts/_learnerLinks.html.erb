@@ -1,0 +1,15 @@
+<li><%=link_to "Home", root_path%></li>
+<li><%=link_to "Schedule", schedules_path%></li>
+<li>
+	<div class="dropdown">
+	  <a class="btn btn-default" role="button" data-toggle="dropdown" href="#"><%=current_user.name%><span class="caret"></span></a>
+	  <ul class="dropdown-menu">
+	  	<%unless Learner.find_by(user_id: current_user.id).nil?%>
+	    <li><%=link_to "Profile", edit_learner_path(Learner.find_by(user_id: current_user.id).id), tabindex:-1%></li>
+	    <%end%>
+	    <li><%=link_to "Account settings", edit_user_registration_path, tabindex:-1%></li>
+	    <li class="divider"></li>
+	    <li><%=link_to "Log out", destroy_user_session_path, method: :delete, tabindex:-1%></li>
+	  </ul>
+	</div>
+</li>

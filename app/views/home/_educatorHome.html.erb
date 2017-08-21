@@ -1,0 +1,19 @@
+	<div class="col-md-4">
+		<div id="goalGauge" class="200x160px"></div>
+		<%@weekly_hours_taught = current_user.educator.weekly_hours_logged%>
+		<%@weekly_goal = current_user.educator.weekly_goal%>
+	</div>
+	<div class="col-md-4">
+		<h3>You've taught <%=Schedule.where('educator_id = ?', current_user.id).count%> kids. Keep it up!</h3>
+	</div>
+	<div class="col-md-4"></div>
+<script>
+  var g = new JustGage({
+    id: "goalGauge",
+    // levelColors: kvLookup('levelColors', config, dataset, ["#a9d70b", "#f9c802", "#ff0000"], 'array', ','),
+    value: <%=@weekly_hours_taught%>,
+    min: 0,
+    max: <%=@weekly_goal%>,
+    title: " "
+  });
+</script>

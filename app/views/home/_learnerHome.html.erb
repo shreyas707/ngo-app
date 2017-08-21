@@ -1,0 +1,44 @@
+<h1>Choose a chapter to learn</h1>
+<div class="row"> 
+  <div class="col md 4">
+    <h3><%unless @events.empty?%>
+          Your next meeting is at <%=@events.first.date_time_of_class.strftime("%d of %B")%> on the <%=@events.first.date_time_of_class%> with <%=@events.first.educator.user.name%>. <%=link_to "See all your events here", schedules_path%>
+        <%else%>
+          You have no scheduled meetings. Request a class below to schedule one
+          </h3>
+          <%end%>
+  </div>
+</div>
+<table id="chapter-table" class="datatable responsive no-wrap">
+    <thead>
+        <tr>
+            <th>Chapter</th>
+            <th>Subject</th>
+            <th>   </th>
+        </tr>
+    </thead>
+    <tbody>
+        <%@chapters.each do |chapter|%>
+        <tr>
+            <td><%=chapter.name%></td>
+            <td><%=chapter.subject.name%></td>
+            <td>  <%=link_to schedules_path(chapter_id: chapter.id), method: :post,class:"btn btn-success" do%>
+                    <i class="glyphicon glyphicon-send"></i>Request a class for this chapter
+                  <%end%></td>
+        </tr>
+        <%end%>
+    </tbody>
+</table>
+<script type="text/javascript">
+$('.datatable').DataTable({
+  // ajax: ...,
+  // autoWidth: false,
+  // pagingType: 'full_numbers',
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
+});
+</script>

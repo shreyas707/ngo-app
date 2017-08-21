@@ -1,0 +1,16 @@
+<h1>Create a new organization</h1>
+<%=form_for @organization do |f|%>
+	<%if @organization.errors.any?%>
+		<ul>
+		<%@organization.errors.full_messages.each do |message|%>
+				<li><%=message%></li>
+		<%end%>
+		</ul>
+	<%end%>
+	<%=f.text_field :name, placeholder: "Name", autofocus: true%><br/>
+	<%=f.text_field :country, placeholder: "country"%><br/>
+	<%=f.text_field :state, placeholder: "state"%><br/>
+	<%=f.radio_button :type_of_organization, true%>NGO
+	<%=f.radio_button :type_of_organization, false%>School<br/>
+	<%=f.submit%>
+<%end%>

@@ -1,0 +1,49 @@
+<%= form_for @user do |f| %>
+    <%if @user.errors.any?%>
+    <ul>
+      <%@user.errors.full_messages.each do |message|%>
+        <li><%=message%></li>
+      <%end%>
+    </ul>
+  <%end%>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email%>
+  </div>
+  <%= f.collection_select :role_id, Role.all, :id, :name, prompt: "Select Role"%> <br /> 
+  <div class="field", id="organization"> 
+  <%= f.collection_select :organization_id, Organization.where('name IS NOT ?', 'Educator Placeholder'), :id, :name, prompt: "Select organization"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+  <script>
+    organizationHandle = document.getElementById('organization');
+    organizationHandle.style.display = 'none';
+    roleHandle = document.getElementById('user_role_id');
+    console.log(roleHandle.value)
+    roleHandle.onchange= function(){if (roleHandle.value == 2 || roleHandle.value == 3){
+      organizationHandle.style.display = 'block';  
+    }
+    else{
+      organizationHandle.style.display = 'none';
+    }
+    };
+  </script>
+  <% end %>

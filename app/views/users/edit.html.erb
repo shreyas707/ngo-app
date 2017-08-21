@@ -1,0 +1,10 @@
+<h2>Edit <%=@user.name%></h2>
+<%if current_user.role_id == 1%>
+  <%=render 'adminForm'%>
+  <%if @user.role_id ==2%>
+  <%end%>
+<%else%>
+  <%= render 'orgForm'%>
+  <%if @user.role_id ==2%>
+  <%end%>
+<%end%>

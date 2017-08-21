@@ -1,0 +1,64 @@
+<div class="row">
+	<div class="col-md-12">
+		<%unless @requests.empty?%>
+			<table class="table borderless">
+				<tbody>
+					<%@requests.each do |request|%>
+					<tr>
+						<td><%=request.learner.user.name%></td>
+						<td><%=request.chapter.subject.name%> (Grade <%=request.learner.grade%>) - <%=request.chapter.name%></td>
+						<td>Availible between <%=request.learner.start_time.strftime('%H:%M')%> and <%=request.learner.end_time.strftime('%H:%M')%></td>
+						<td>
+						</td>
+						<td>
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal", id="buttonModal">
+							  Accept request
+							</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Pick a date and a time</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							       	<%=form_for request do |f|%>
+										<%=f.hidden_field :confirmed, value: true%>
+										<%=f.text_field :date_time_of_class%>
+										<%@start_time = request.learner.start_time.strftime("%H%M")%>
+										<%@end_time = request.learner.end_time.strftime("%H%M")%>
+							      	<div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<%=f.submit "Accept request", class:'btn btn-success'%>	
+									<%end%>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						</td>
+					</tr>
+					<%end%>
+				</tbody>
+			</table>
+		<%else%>
+			<h3>There are currently no learners requesting subjects that you are strong in. Would you like to <%=link_to "change your subjects",edit_educator_path(current_user.id)%></h3>
+		<%end%>
+	</div>
+</div>
+<script type="text/javascript">
+	var format = 'yyyy-mm-dd';
+	buttonHandle = document.getElementById('buttonModal');
+	buttonHandle.onclick = function(){$('#myModal').modal('toggle')};
+	scheduleHandle = document.getElementById('schedule_date_time_of_class');
+	scheduleHandle.onclick = function (){
+            $('#schedule_date_time_of_class').datetimepicker({
+                inline: true,
+                sideBySide: true
+            });
+        };
+</script>

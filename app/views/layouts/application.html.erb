@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Jquery cdn -->
+
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.theme.css">
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jquery datatable cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+  </head>
+
+  <body>
+    <div class="container">
+    <header class="navbar  navbar-default">
+      <div class="navbar-class">
+          <ul class="nav navbar-nav pull-right">
+            <%unless user_signed_in?%>
+              <li><%=link_to "Log in", new_user_session_path%></li><li><%=link_to "Sign Up", new_user_registration_path%></li>
+            <%end%>
+            <%if user_signed_in?%>
+              <%case current_user.role_id%>
+              <%when 1%>
+                <%=render 'layouts/adminLinks'%>
+              <%when 2%>
+                <%=render 'layouts/learnerLinks'%>
+              <%when 3%>
+                <%=render 'layouts/orgLinks'%>
+              <%when 4%>
+                <%=render 'layouts/educatorLinks'%>
+              <%when 5%>
+                <%=render 'layouts/educatorLinks'%>
+              <%end%>
+            <%end%>
+          </ul>
+        </div>
+    </header>
+ 	  <p class="notice"><%= notice %></p>
+   	<p class="alert"><%= alert %></p>
+    <%= yield %>
+    </div>
+  </body>
+</html>

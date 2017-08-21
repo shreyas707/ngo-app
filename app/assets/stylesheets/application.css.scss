@@ -1,0 +1,61 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require dataTables/jquery.dataTables
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require fullcalendar
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";	
+@import 'bootstrap-datetimepicker';
+
+.dropdown-menu.arrow {
+  top: 45px;
+
+  &:before{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 37px;
+    height: 12px;
+    top: -12px;
+    left: 66px;
+    background-image: image-url( 'dropdowns/arrow_top.png' );
+  }
+}
+.open > .zoom.dropdown-menu {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+
+}
+
+.zoom.dropdown-menu {
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transform: scale(0, 0);
+  display: block;
+
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+}
+.borderless table {
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+}

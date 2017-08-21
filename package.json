@@ -1,0 +1,7 @@
+{
+  "name": "Project",
+  "private": true,
+  "dependencies": {
+    "jquery-asPieProgress": "^0.4.6"
+  }
+}

@@ -1,0 +1,13 @@
+<%unless @event.nil?%>
+	<h3>
+		<%if current_user.role_id == 4 || current_user.role_id == 5%>
+			<a href = "https://hangouts.google.com">Click here to go to hangouts</a>. Your learner's email id is: <%=@event.learner.user.email%>. Please connect with them on hangouts, then after the call has started make sure you come back here and click the start timer button. This will help us tracking the amount of time you spend teaching and issue certificates accordingly.
+		</h3>
+			<!-- how to set up buttons for calls -->
+		<%else%>
+		<h3>
+			<%=link_to "Go to class.", "https://hangouts.google.com"%>Sign in with the email and password assigned to you. Your tutor/mentor will start the call, wait for them there.
+		<%end%>
+	</h3>
+<%else%>
+<%end%>

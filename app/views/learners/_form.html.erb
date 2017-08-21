@@ -1,0 +1,15 @@
+<%=form_for @learner do |f|%>
+	<%if @learner.errors.any?%>
+		<ul>
+		<%@learner.errors.full_messages.each do |message|%>
+			<li><%=message%></li>
+		<%end%>
+		</ul>
+	<%end%>
+	<%=f.select :grade, (1..12), prompt:"Select a grade"%><br/>
+	<h5><b>Select a window of time during which this learner will be recieving lessons. This can be changed by them later on</b></h5><br/>
+	<%= f.time_field :start_time%><br/>
+	<%=f.time_field :end_time%><br/>
+	<%=f.hidden_field :user_id%>
+	<%=f.submit%>
+<%end%>

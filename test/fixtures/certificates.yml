@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  educator_id: 1
+  org_id: 1
+  hours: 1
+  granted: false
+
+two:
+  educator_id: 1
+  org_id: 1
+  hours: 1
+  granted: false

@@ -1,0 +1,6 @@
+<h1>Edit Chapter</h1>
+<%=form_for @chapter do |f|%>
+	<%=f.text_field :name, autofocus:true%><br/>
+	<%=f.collection_select :subject_id, Subject.all, :id, :name, prompt:"Select subject"%><br/>
+	<%=f.submit%>
+<%end%>
