@@ -16,6 +16,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'chosen-rails'
 gem 'fullcalendar-rails'
 gem 'pry'
+gem 'omniauth-google-oauth2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
