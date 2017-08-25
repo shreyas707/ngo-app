@@ -1,7 +1,11 @@
 	<div class="col-md-4">
 		<div id="goalGauge" class="200x160px"></div>
 		<%@weekly_hours_taught = current_user.educator.weekly_hours_logged%>
-		<%@weekly_goal = current_user.educator.weekly_goal%>
+		<%unless current_user.educator.weekly_goal.nil?%>
+			<%@weekly_goal = current_user.educator.weekly_goal%>
+		<%else%>
+			<%@weekly_goal = 0%>
+		<%end%>
 	</div>
 	<div class="col-md-4">
 		<h3>You've taught <%=Schedule.where('educator_id = ?', current_user.id).count%> kids. Keep it up!</h3>
