@@ -1,6 +1,10 @@
 	<div class="col-md-4">
 		<div id="goalGauge" class="200x160px"></div>
-		<%@weekly_hours_taught = current_user.educator.weekly_hours_logged%>
+		<%unless current_user.educator.weekly_hours_logged.nil?%>
+			<%@weekly_hours_taught = current_user.educator.weekly_hours_logged%>
+		<%else%>
+			<%@weekly_hours_taught = 0%>
+		<%end%>
 		<%unless current_user.educator.weekly_goal.nil?%>
 			<%@weekly_goal = current_user.educator.weekly_goal%>
 		<%else%>
