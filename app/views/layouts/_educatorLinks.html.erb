@@ -1,5 +1,5 @@
 <li><%=link_to "Schedule", schedules_path%>
-<%unless current_user.educator.requests.empty??%>
+<%unless current_user.educator.requests.empty?%>
 	<%requests_length = current_user.educator.requests.length.to_s%>
 <%else%>
 	<%requests_length = 0%>
