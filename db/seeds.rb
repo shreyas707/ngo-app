@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Role.create(name:"super_admin")
+Role.create(name:"learner")
+Role.create(name:"org_admin")
+Role.create(name:"mentor")
+Role.create(name:"tutor")
 User.create(email: "admin@admin.com", password: "password", name: "admin", role_id: 1, organization_id:Organization.find_by(name:"Educator Placeholder").id)
 Organization.create(name: "Educator Placeholder", country: "international", state:"edu")
 Organization.create(name:"Akshaya patra", country:"india", state:"karnataka")
