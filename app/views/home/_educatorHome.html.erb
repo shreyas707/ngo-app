@@ -1,3 +1,13 @@
+<div class="row">
+	<div class="col-md-10">
+		  <div class="col md 4">
+		    <h3><%unless @events.nil?%>
+		          Your next meeting is on the <%=@events.first.date_time_of_class.strftime("Your next class is on the #{@events.first.date_time_of_class.day.ordinalize} of %B")%> at <%=@events.first.date_time_of_class.strftime("%I:%M %p")%> with <%=@events.first.learner.user.name%>. <%=link_to "See all your events here", schedules_path%>
+		        <%else%>
+		          You have no scheduled meetings. Accept a request to schedule one.		          </h3>
+          <%end%>
+	</div>
+</div>
 	<div class="col-md-4">
 		<div id="goalGauge" class="200x160px"></div>
 		<%@weekly_hours_taught = current_user.educator.weekly_hours_logged%>

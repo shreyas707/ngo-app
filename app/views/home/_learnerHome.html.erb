@@ -1,8 +1,8 @@
 <h1>Choose a chapter to learn</h1>
 <div class="row"> 
   <div class="col md 4">
-    <h3><%unless @events.empty?%>
-          Your next meeting is at <%=@events.first.date_time_of_class.strftime("%d of %B")%> on the <%=@events.first.date_time_of_class%> with <%=@events.first.educator.user.name%>. <%=link_to "See all your events here", schedules_path%>
+    <h3><%unless @events.nil?%>
+          <%=@events.first.date_time_of_class.strftime("Your next class is on the #{@events.first.date_time_of_class.day.ordinalize} of %B")%> at <%=@events.first.date_time_of_class.strftime("%I:%M %p")%>  with <%=@events.first.educator.user.name.capitalize%>. <%=link_to "See all your events here", schedules_path%>
         <%else%>
           You have no scheduled meetings. Request a class below to schedule one
           </h3>
