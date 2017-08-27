@@ -2,9 +2,9 @@ class SchedulesController < ApplicationController
 	before_action :authenticate_user!
 	def index
 		if current_user.role_id == 2
-			@events = Schedule.where('learner_id = ?', current_user.learner.id)
+			@events = Schedule.where('learner_id = ? AND confirmed = ?', current_user.learner.id, true)
 		else
-			@events = Schedule.where('educator_id = ?', current_user.educator.id)
+			@events = Schedule.where('educator_id = ? AND confirmed = ?', current_user.educator.id, true)
 		end
 	end
 	def show

@@ -12,6 +12,7 @@ gem 'will_paginate'
 gem 'client_side_validations'
 gem "paranoia", "~> 2.2"
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'moment_timezone-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'chosen-rails'
 gem 'fullcalendar-rails'
