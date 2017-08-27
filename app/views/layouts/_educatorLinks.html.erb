@@ -1,6 +1,8 @@
 <li><%=link_to "Schedule", schedules_path%>
-<%requests_length = current_user.educator.requests.length.to_s%>
-<li><%=link_to "Requests (" + requests_length + ")", educator_path(current_user.id)%>
+<%unless current_user.educator.nil?%>
+	<%requests_length = current_user.educator.requests.length.to_s%>
+	<li><%=link_to "Requests (" + requests_length + ")", educator_path(current_user.id)%>
+<%end%>
 <li><%=link_to "Home", root_path%></li>
 
 <li>
