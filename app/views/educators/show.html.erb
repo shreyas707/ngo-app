@@ -32,8 +32,6 @@
 							       	<%=form_for request do |f|%>
 										<%=f.hidden_field :confirmed, value: true%>
 										<%=f.text_field :date_time_of_class%>
-										<%@start_time = request.learner.start_time.strftime("%H%M")%>
-										<%@end_time = request.learner.end_time.strftime("%H%M")%>
 							      	<div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<%=f.submit "Accept request", class:'btn btn-success'%>	
