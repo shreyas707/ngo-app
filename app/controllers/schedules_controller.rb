@@ -42,7 +42,7 @@ class SchedulesController < ApplicationController
 			@schedule.date_time_of_class =  DateTime.strptime(params[:schedule][:date_time_of_class], '%m/%e/%Y %I:%M %p')
 			if @schedule.save
 			redirect_to schedules_path, notice: "Great the meeting is set! You can view it in your schedule. Come back then and we'll connect you!"
-			NotificationMailer.schedule_confirmation(@schedule).deliver!
+			# NotificationMailer.schedule_confirmation(@schedule).deliver!
 			end
 		# end
 
