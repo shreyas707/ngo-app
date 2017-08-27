@@ -4,10 +4,9 @@
 			<table class="table borderless">
 				<tbody>
 					<%@requests.each do |request|%>
+						<%@request = request%>
 					<tr>
 						<td><%=request.learner.user.name%></td>
-						<%@startHour = request.learner.start_time.hour%>
-						<%@endHour = request.learner.end_time.hour%>
 						<td><%=request.chapter.subject.name%> (Grade <%=request.learner.grade%>) - <%=request.chapter.name%></td>
 						<td>Availible between <%=request.learner.start_time.strftime('%H:%M')%> and <%=request.learner.end_time.strftime('%H:%M')%></td>
 						<td>
@@ -57,13 +56,18 @@
 	buttonHandle = document.getElementById('buttonModal');
 	buttonHandle.onclick = function(){$('#myModal').modal('toggle')};
 	scheduleHandle = document.getElementById('schedule_date_time_of_class');
-	var Date = moment.tz("Asia/Kolkata").format();
+	// var Date = moment.tz("Asia/Kolkata").format();
 	scheduleHandle.onclick = function (){
             $('#schedule_date_time_of_class').datetimepicker({
                 inline: true,
                 sideBySide: true,
-                timeZone: "Asia/Kolkata"
-                enabledHours: [[moment().hour(<%=@startHour%>).minutes(0), moment().hour(<%=@endHour%>).minutes(0)]]
+                minDate: moment(),
+                maxDate: moment().add(1, 'week'),
+                // timeZone: "Asia/Kolkata"
+                disabledTimeIntervals: [moment().hour(<%=@request.learner.start_time.hour%>).minutes(<%=@request.learner.start_time.min%>), moment().hour(<%=@request.learner.end_time.hour%>).minutes(<%=@request.learner.end_time.min%>)]
             });
         };
 </script>
+
+
+
