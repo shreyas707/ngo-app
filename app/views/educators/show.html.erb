@@ -4,8 +4,6 @@
 			<table class="table borderless">
 				<tbody>
 					<%@requests.each do |request|%>
-						<%@start_time = request.learner.start_time%>
-						<%@end_time = request.learner.end_time%>
 					<tr>
 						<td><%=request.learner.user.name%></td>
 						<td><%=request.chapter.subject.name%> (Grade <%=request.learner.grade%>) - <%=request.chapter.name%></td>
@@ -63,7 +61,7 @@
                 minDate: moment(),
                 maxDate: moment().add(1, 'week'),
                 // timeZone: "Asia/Kolkata"
-                disabledTimeIntervals: [moment().hour(<%=@start_time.hour%>).minutes(<%=@start_time.min%>), moment().hour(<%=@end_time.hour%>).minutes(<%=@end_time.min%>)]
+
             });
         };
 </script>
