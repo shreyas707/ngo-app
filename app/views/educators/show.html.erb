@@ -4,8 +4,8 @@
 			<table class="table borderless">
 				<tbody>
 					<%@requests.each do |request|%>
-						<%@start_time = request.start_time%>
-						<%@end_time = request.end_time%>
+						<%@start_time = request.learner.start_time%>
+						<%@end_time = request.learner.end_time%>
 					<tr>
 						<td><%=request.learner.user.name%></td>
 						<td><%=request.chapter.subject.name%> (Grade <%=request.learner.grade%>) - <%=request.chapter.name%></td>
