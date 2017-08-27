@@ -16,7 +16,7 @@
   </div>
   <%= f.collection_select :role_id, Role.all, :id, :name, prompt: "Select Role"%> <br /> 
   <div class="field", id="organization"> 
-  <%= f.collection_select :organization_id, Organization.where('name IS NOT ?', 'Educator Placeholder'), :id, :name, prompt: "Select organization"%>
+  <%= f.collection_select :organization_id, Organization.where('name != ?', 'Educator Placeholder'), :id, :name, prompt: "Select organization"%>
   </div>
 
   <div class="field">
