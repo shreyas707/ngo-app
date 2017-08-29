@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 #setting up datatables
-
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-ui-rails'
 gem 'will_paginate'
@@ -16,7 +15,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'chosen-rails'
 gem 'fullcalendar-rails'
 gem 'pry'
-gem 'omniauth-google-oauth2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
@@ -41,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'activerecord-session_store'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #authentication gems

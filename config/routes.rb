@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  devise_for :users
-  scope "/admin" do
+  namespace :admin do
     resources :users
   end
   # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
