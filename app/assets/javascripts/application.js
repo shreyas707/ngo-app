@@ -19,8 +19,6 @@
 //= require rails.validations
 //= require dataTables/jquery.dataTables 
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require bootstrap
-//= require bootstrap-sprockets
 //= require fullcalendar
 //= require_tree .
 
