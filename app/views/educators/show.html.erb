@@ -11,15 +11,16 @@
 						<td>
 						</td>
 						<td>
+														
 							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="buttonModal">
-							  Accept request
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_<%= request.id %>">
+							  Accept Request
 							</button>
 
 							<!-- Modal -->
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal fade" id="myModal_<%= request.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
+								<div class="modal-content">
 							      <div class="modal-header">
 							        <h5 class="modal-title" id="exampleModalLabel">Pick a date and a time</h5>
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -38,6 +39,7 @@
 							    </div>
 							  </div>
 							</div>
+
 						</td>
 					</tr>
 					<%end%>
@@ -48,10 +50,9 @@
 		<%end%>
 	</div>
 </div>
+
 <script type="text/javascript">
 	var format = 'yyyy-mm-dd';
-	buttonHandle = document.getElementById('buttonModal');
-	buttonHandle.onclick = function(){$('#myModal').modal('toggle')};
 	scheduleHandle = document.getElementById('schedule_date_time_of_class');
 	// var Date = moment.tz("Asia/Kolkata").format();
 	scheduleHandle.onclick = function (){
@@ -61,7 +62,7 @@
                 minDate: moment(),
                 maxDate: moment().add(1, 'week'),
                 // timeZone: "Asia/Kolkata"
-
+                disabledTimeIntervals: [moment().hour(<%=@start_time.hour%>).minutes(<%=@start_time.min%>), moment().hour(<%=@end_time.hour%>).minutes(<%=@end_time.min%>)]
             });
         };
 </script>
