@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :schedules
   get 'home/index'
   root 'home#index'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+ namespace :admin do
   scope "/admin" do
     resources :users
   end
