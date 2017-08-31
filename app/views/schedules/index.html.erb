@@ -1,14 +1,12 @@
 <div id='calendar'></div>
 
 <script>
-
 	$(document).ready(function() {
-
 		$('#calendar').fullCalendar({
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
-				<%@events.each do |event|%>
+				<% @events.each do |event|%>
 					{
 						title: '<%=event.chapter.name%> - <%=event.chapter.subject.name%>',
 						start: '<%=event.date_time_of_class.strftime("%Y-%m-%dT%H:%M")%>',
