@@ -1,9 +1,11 @@
 <div class="row">
 	<div class="col-md-12">
 		<%unless @requests.empty?%>
-			<table class="table borderless">
+<table class="table borderless">
 				<tbody>
 					<%@requests.each do |request|%>
+						<%@start_time = request.learner.start_time%>
+						<%@end_time = request.learner.end_time%>
 					<tr>
 						<td><%=request.learner.user.name%></td>
 						<td><%=request.chapter.subject.name%> (Grade <%=request.learner.grade%>) - <%=request.chapter.name%></td>
@@ -11,7 +13,7 @@
 						<td>
 						</td>
 						<td>
-														
+							
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_<%= request.id %>">
 							  Accept Request
@@ -39,6 +41,7 @@
 							    </div>
 							  </div>
 							</div>
+
 
 						</td>
 					</tr>
