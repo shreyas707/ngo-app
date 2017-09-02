@@ -32,7 +32,7 @@
 							      <div class="modal-body">
 							       	<%=form_for request do |f|%>
 										<%=f.hidden_field :confirmed, value: true%>
-										<%=f.text_field :date_time_of_class, class:"dateInit"%>
+										<%=f.text_field :date_time_of_class%>
 							      	<div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<%=f.submit "Accept request", class:'btn btn-success'%>	
@@ -56,24 +56,17 @@
 
 <script type="text/javascript">
 	var format = 'yyyy-mm-dd';
-	elements = document.getElementsByClassName('dateInit');
+	scheduleHandle = document.getElementById('schedule_date_time_of_class');
 	// var Date = moment.tz("Asia/Kolkata").format();
-	// scheduleHandle.onclick = function (){
- //            $('#').datetimepicker({
- //                inline: true,
- //                sideBySide: true,
- //                minDate: moment(),
- //                maxDate: moment().add(1, 'week'),
- //                // timeZone: "Asia/Kolkata"
- //            });
- //        };
-	  $('#dateInit').datetimepicker({
-	                inline: true,
-	                sideBySide: true,
-	                minDate: moment(),
-	                maxDate: moment().add(1, 'week'),
-	                // timeZone: "Asia/Kolkata"
-	    });  
+	scheduleHandle.onclick = function (){
+            $('#schedule_date_time_of_class').datetimepicker({
+                inline: true,
+                sideBySide: true,
+                minDate: moment(),
+                maxDate: moment().add(1, 'week'),
+                // timeZone: "Asia/Kolkata"
+            });
+        };
 </script>
 
 
