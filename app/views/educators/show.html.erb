@@ -56,17 +56,26 @@
 
 <script type="text/javascript">
 	var format = 'yyyy-mm-dd';
-	scheduleHandle = document.getElementsByClassName('dateInit');
+	elements = document.getElementsByClassName('dateInit');
 	// var Date = moment.tz("Asia/Kolkata").format();
-	scheduleHandle.onclick = function (){
-            $('#schedule_date_time_of_class').datetimepicker({
-                inline: true,
-                sideBySide: true,
-                minDate: moment(),
-                maxDate: moment().add(1, 'week'),
-                // timeZone: "Asia/Kolkata"
-            });
-        };
+	// scheduleHandle.onclick = function (){
+ //            $('#').datetimepicker({
+ //                inline: true,
+ //                sideBySide: true,
+ //                minDate: moment(),
+ //                maxDate: moment().add(1, 'week'),
+ //                // timeZone: "Asia/Kolkata"
+ //            });
+ //        };
+ 	for(var i=0; i<elements.length; i++) {
+	  $('#schedule_date_time_of_class').datetimepicker({
+	                inline: true,
+	                sideBySide: true,
+	                minDate: moment(),
+	                maxDate: moment().add(1, 'week'),
+	                // timeZone: "Asia/Kolkata"
+	    });  
+	};
 </script>
 
 
