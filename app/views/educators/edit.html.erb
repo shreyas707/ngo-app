@@ -19,6 +19,5 @@
 <h4>What do you like to teach </h4>
 
 	<%= f.collection_check_boxes :subject_ids, Subject.all, :id, :name %><br/>
-		 <%= f.select :subject_ids, options_for_select(Subject.all.sort), :id, :name,{:include_blank => true}, {:multiple => true, :size =>11}  %><br/>
 	<%=f.submit "Let's go"%>
 <%end%>
