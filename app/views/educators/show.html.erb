@@ -56,17 +56,19 @@
 
 <script type="text/javascript">
 	var format = 'yyyy-mm-dd';
-	scheduleHandle = document.getElementsByClassName('date_time');
 	// var Date = moment.tz("Asia/Kolkata").format();
-	scheduleHandle.onclick = function (){
-            $('.date_time').datetimepicker({
-                inline: true,
-                sideBySide: true,
-                minDate: moment(),
-                maxDate: moment().add(1, 'week'),
-                // timeZone: "Asia/Kolkata"
-            });
-        };
+	scheduleHandles = document.getElementsByClassName('date_time');
+	for (let scheduleHandle of scheduleHandles){	
+		scheduleHandle.onclick = function (){
+	            $('.date_time').datetimepicker({
+	                inline: true,
+	                sideBySide: true,
+	                minDate: moment(),
+	                maxDate: moment().add(1, 'week'),
+	                // timeZone: "Asia/Kolkata"
+	            });
+	        };
+	}
 </script>
 
 
