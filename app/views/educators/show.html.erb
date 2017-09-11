@@ -32,7 +32,7 @@
 							      <div class="modal-body">
 							       	<%=form_for request do |f|%>
 										<%=f.hidden_field :confirmed, value: true%>
-										<%=f.text_field :date_time_of_class%>
+										<%=f.text_field :date_time_of_class, {class: "date_time"}%>
 							      	<div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<%=f.submit "Accept request", class:'btn btn-success'%>	
@@ -56,10 +56,10 @@
 
 <script type="text/javascript">
 	var format = 'yyyy-mm-dd';
-	scheduleHandle = document.getElementById('schedule_date_time_of_class');
+	scheduleHandle = document.getElementsByClassName('date_time');
 	// var Date = moment.tz("Asia/Kolkata").format();
 	scheduleHandle.onclick = function (){
-            $('#schedule_date_time_of_class').datetimepicker({
+            $('.date_time').datetimepicker({
                 inline: true,
                 sideBySide: true,
                 minDate: moment(),
