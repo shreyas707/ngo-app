@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_admin_status
   def index
