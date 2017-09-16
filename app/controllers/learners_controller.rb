@@ -8,8 +8,9 @@ class LearnersController < ApplicationController
   end
   def create
   	@learner = Learner.new(params[:learner].permit(:grade, :start_time, :end_time, :user_id))
+    binding.pry
   	if @learner.save
-  		redirect_to users_path, notice:"Learner successfully created"
+  		redirect_to admin_users_path, notice:"Learner successfully created"
   	else
   		render action:"new"
   	end

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_admin_status
   def index
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       if @user.role_id == 2
         redirect_to new_learner_path(user_id: @user.id), notice: "Just a couple more details! Thanks."
       else
-  		redirect_to user_path(@user.id), notice: "User successfully created!"
+  		redirect_to admin_user_path(@user.id), notice: "User successfully created!"
       end
   	else 
   		render action:"new"
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
   	@user = User.find(params[:id])
   	if @user.update_attributes(params[:user].permit(:name, :email, :dob, :role_id, :password))
-  		redirect_to user_path(@user.id), notice: "User updated!"
+  		redirect_to admin_user_path(@user.id), notice: "User updated!"
   	else 
   		render action:"edit"
   	end
@@ -46,12 +46,12 @@ class UsersController < ApplicationController
   def destroy
   	@user = User.find(params[:id])
   	if @user.destroy
-  		redirect_to users_path, notice: "User deleted"
+  		redirect_to admin_users_path, notice: "User deleted"
       if Learner.find_by(user_id: @user.id)
         Learner.find_by(user_id: @user.id).destroy
       end
   	else
-  		redirect_to user_path(@user.id), notice: "Try again"
+  		redirect_to admin_user_path(@user.id), notice: "Try again"
   	end
   end
 end

@@ -17,16 +17,16 @@
 						<%@users.each_with_index do |user, index|%>
 							<tr>
 								<td><%=index+1%></td>
-								<td><%=link_to user.name, user_path(user.id)%></td>
+								<td><%=link_to user.name, admin_user_path(user.id)%></td>
 								<td><%=user.role.name%></td>
 								<td>
 									<%=user.organization.try(:name) %>
 								</td> 
 								<td><div class="btn-group" role="group" aria-label="...">
-									<%=link_to edit_user_path(user.id), class:"btn btn-primary" do%>
+									<%=link_to edit_admin_user_path(user.id), class:"btn btn-primary" do%>
 										<i class="glyphicon glyphicon-pencil"></i>Edit user
 									<%end%>
-									<%=link_to user_path(user.id), method: :delete, class:"btn btn-danger",data: {confirm: "Arer you sure"} do%>
+									<%=link_to admin_user_path(user.id), method: :delete, class:"btn btn-danger",data: {confirm: "Are you sure"} do%>
 										<i class="glyphicon glyphicon-remove"></i>Delete user
 									<%end%>
 									</div></td>
@@ -41,7 +41,7 @@
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
-	<%=link_to new_user_path, class:"btn btn-success" do%>
+	<%=link_to new_admin_user_path, class:"btn btn-success" do%>
 		<i class="glyphicon glyphicon-plus"></i>New user
 	<%end%>
 </div>

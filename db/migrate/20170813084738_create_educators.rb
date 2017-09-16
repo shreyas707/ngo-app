@@ -1,7 +1,6 @@
 class CreateEducators < ActiveRecord::Migration[5.1]
   def change
     create_table :educators do |t|
-
       t.timestamps
       t.integer :user_id
       t.boolean :certificate_required

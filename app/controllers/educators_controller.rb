@@ -11,9 +11,11 @@ class EducatorsController < ApplicationController
     @educator.total_hours_logged = 0.0
     @educator.weekly_hours_logged = 0.0
     @educator.certificate_required = true
+    binding.pry
   	if @educator.save
   		redirect_to root_path, notice: "Nice, lets start"
   	else
+      binding.pry
   		render action:"new"
   	end
   end

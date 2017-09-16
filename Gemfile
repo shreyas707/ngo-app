@@ -18,6 +18,7 @@ gem 'chosen-rails'
 gem 'fullcalendar-rails'
 gem 'pry'
 gem 'activerecord-session_store'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-8-stable'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
