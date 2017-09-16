@@ -16,9 +16,8 @@ class User < ApplicationRecord
 	    user.password = Devise.friendly_token[0,20]
 	    user.name = auth.info.name  
       user.role_id = 4
-      binding.pry
       user.organization_id = Organization.find_by(name:'Educator Placeholder').id
-      binding.pry# assuming the user model has a name
+      # assuming the user model has a name
 	    # If you are using confirmable and the provider(s) you use validate emails, 
 	    # uncomment the line below to skip the confirmation emails.
 	    # user.skip_confirmation!
